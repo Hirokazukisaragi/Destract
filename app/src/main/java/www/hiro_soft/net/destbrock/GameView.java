@@ -47,6 +47,7 @@ public class GameView extends View{
     private float ballspeedX = 10;
     private float ballspeedY = 10;
     private Thread thread;
+    private double score = 0;
     private View view;
     private Handler handler = new Handler();
     private final long MSEC = 30;
@@ -131,6 +132,7 @@ public class GameView extends View{
                     paint.setTextSize(48);
                     paint.setColor(Color.RED);
                     canvas.drawText("GAME OVER",canvas.getWidth()/3,canvas.getHeight()/2,paint);
+                    canvas.drawText("SCORE"+score,canvas.getWidth()/3,canvas.getHeight()/3,paint);
 
                 }
                 if(blockflag[k]) {
@@ -147,6 +149,7 @@ public class GameView extends View{
                         //true){
                         blockflag[k] = false;
                         ballspeedY = -ballspeedY;
+                        score++;
                     }
                     paint.setColor(Color.BLACK);
                     //for(l = 0;l < 26; l++) {
