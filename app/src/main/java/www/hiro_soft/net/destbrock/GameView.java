@@ -44,8 +44,8 @@ public class GameView extends View{
     private int col = 0;
     private float padBegin = 0f;
     public float ballX = 480,ballY = 400;
-    private float ballspeedX = 10;
-    private float ballspeedY = 10;
+    private float ballspeedX = 15;
+    private float ballspeedY = 15;
     private Thread thread;
     private double score = 0;
     private View view;
@@ -110,6 +110,7 @@ public class GameView extends View{
             float piyo = 0f;
             float oneHLine = canvas.getHeight() / 25f;
             float oneVLine = canvas.getWidth() / 5f;
+            boolean clearcheck = false;
             for (k = 0; k < 25; k++) {
                 if(ballY <= 0){
                     ballspeedY = -ballspeedY;
@@ -150,6 +151,13 @@ public class GameView extends View{
                         blockflag[k] = false;
                         ballspeedY = -ballspeedY;
                         score++;
+                        //クリア判定
+                        for(foo = 0;foo < 25;foo++){
+                            if(blockflag[foo] == true)break;
+                            for(foo = 0;foo < 25;foo++){
+                                blockflag[foo] = true;
+                            }
+                        }
                     }
                     paint.setColor(Color.BLACK);
                     //for(l = 0;l < 26; l++) {
